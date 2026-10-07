@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dwall-e · ინტერაქტიული ფიზიკის ლაბორატორია</title>
+    <meta name="description" content="dwall-e — უფასო ინტერაქტიული ფიზიკის ლაბორატორია სკოლებისთვის: 65 სიმულაცია ქართულად და ინგლისურად, ინტერნეტის გარეშე." />
+    <meta name="theme-color" content="#0b0b10" />
+    <meta property="og:title" content="dwall-e — Explore physics. Understand reality." />
+    <meta property="og:description" content="An interactive physics lab for schools: 65 simulations in Georgian and English, offline and free." />
+    <meta property="og:image" content="media/ka/solar-system.jpg" />
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+    <header class="topbar">
+      <a class="brand" href="#hero" aria-label="dwall-e">
+        <img src="assets/icon-256.png" alt="" width="32" height="32" />
+        <span>dwall-e</span>
+      </a>
+      <nav class="topbar-actions" aria-label="Language and presentation">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="ka" aria-pressed="true">ქარ</button>
+          <button type="button" data-lang="en" aria-pressed="false">ENG</button>
+        </div>
+        <button type="button" class="icon-btn" id="present" data-i18n-title="present" title="Presentation (F)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" /></svg>
+        </button>
+        <a class="btn btn-primary btn-sm" href="#download" data-i18n="nav.download">Download</a>
+      </nav>
+    </header>
+
+    <nav class="dots" aria-label="Slides"></nav>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <main id="main">
+      <!-- 1. Hero -->
+      <section class="slide hero" id="hero" data-title="hero">
+        <video class="hero-video" data-clip="solar-system" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <img class="hero-logo" src="assets/icon-512.png" alt="" width="132" height="132" />
+          <h1>dwall-e</h1>
+          <p class="motto">Explore physics. Understand reality.</p>
+          <p class="lead" data-i18n="hero.lead">An interactive physics lab for school students: change the values, watch what happens, understand why.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://github.com/iibekaia/dwall-e/releases/latest/download/dwall-e-Setup.exe" data-i18n="hero.windows">Download for Windows</a>
+            <a class="btn btn-ghost" href="#download" data-i18n="hero.other">macOS · Linux</a>
+          </div>
+          <ul class="facts">
+            <li><strong data-count="ready">65</strong> <span data-i18n="facts.topics">simulations</span></li>
+            <li><strong>8</strong> <span data-i18n="facts.areas">areas of physics</span></li>
+            <li><strong>4</strong> <span data-i18n="facts.levels">levels</span></li>
+            <li><strong>2</strong> <span data-i18n="facts.languages">languages</span></li>
+          </ul>
+        </div>
+        <a class="scroll-hint" href="#idea" data-i18n-title="next" title="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></a>
+      </section>
+
+      <!-- 2. The idea -->
+      <section class="slide" id="idea" data-title="idea">
+        <div class="split">
+          <div>
+            <p class="eyebrow" data-i18n="idea.eyebrow">How students learn here</p>
+            <h2 data-i18n="idea.title">Physics you can touch</h2>
+            <ol class="steps">
+              <li><span>1</span><div><h3 data-i18n="idea.s1.title">Change a value</h3><p data-i18n="idea.s1.text">Angle, mass, voltage, wavelength — every topic has sliders, presets and switches.</p></div></li>
+              <li><span>2</span><div><h3 data-i18n="idea.s2.title">Watch it happen</h3><p data-i18n="idea.s2.text">Animations follow the real equations step by step, with vectors, labels and live readings.</p></div></li>
+              <li><span>3</span><div><h3 data-i18n="idea.s3.title">Understand why</h3><p data-i18n="idea.s3.text">Theory, formulas and challenges explain what you saw — and what was simplified.</p></div></li>
+            </ol>
+          </div>
+          <figure class="frame"><video data-clip="prism" muted loop playsinline preload="none"></video><figcaption data-topic="prism"></figcaption></figure>
+        </div>
+      </section>
+
+      <!-- 3. Showcase -->
+      <section class="slide" id="showcase" data-title="showcase">
+        <div class="wide">
+          <p class="eyebrow" data-i18n="showcase.eyebrow">From Newton to the Higgs boson</p>
+          <h2 data-i18n="showcase.title">Every topic is a living experiment</h2>
+          <p class="sub" data-i18n="showcase.sub">Real recordings from the app. Click a video to watch it large.</p>
+          <div class="gallery">
+            <figure class="tile"><video data-clip="projectile-motion" muted loop playsinline preload="none"></video><figcaption data-topic="projectile-motion"></figcaption></figure>
+            <figure class="tile"><video data-clip="foucault-pendulum" muted loop playsinline preload="none"></video><figcaption data-topic="foucault-pendulum"></figcaption></figure>
+            <figure class="tile"><video data-clip="electric-motor" muted loop playsinline preload="none"></video><figcaption data-topic="electric-motor"></figcaption></figure>
+            <figure class="tile"><video data-clip="induction" muted loop playsinline preload="none"></video><figcaption data-topic="induction"></figcaption></figure>
+            <figure class="tile"><video data-clip="double-slit" muted loop playsinline preload="none"></video><figcaption data-topic="double-slit"></figcaption></figure>
+            <figure class="tile"><video data-clip="standing-waves" muted loop playsinline preload="none"></video><figcaption data-topic="standing-waves"></figcaption></figure>
+            <figure class="tile"><video data-clip="photoelectric" muted loop playsinline preload="none"></video><figcaption data-topic="photoelectric"></figcaption></figure>
+            <figure class="tile"><video data-clip="atom-model" muted loop playsinline preload="none"></video><figcaption data-topic="atom-model"></figcaption></figure>
+            <figure class="tile"><video data-clip="higgs-boson" muted loop playsinline preload="none"></video><figcaption data-topic="higgs-boson"></figcaption></figure>
+            <figure class="tile"><video data-clip="black-hole" muted loop playsinline preload="none"></video><figcaption data-topic="black-hole"></figcaption></figure>
+            <figure class="tile"><video data-clip="lunar-mission" muted loop playsinline preload="none"></video><figcaption data-topic="lunar-mission"></figcaption></figure>
+            <figure class="tile"><video data-clip="solar-system" muted loop playsinline preload="none"></video><figcaption data-topic="solar-system"></figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Inside a topic -->
+      <section class="slide" id="inside" data-title="inside">
+        <div class="split reverse">
+          <figure class="frame shot"><img data-shot="simulation" alt="" loading="lazy" /></figure>
+          <div>
+            <p class="eyebrow" data-i18n="inside.eyebrow">One template for every topic</p>
+            <h2 data-i18n="inside.title">Inside each simulation</h2>
+            <ul class="checks">
+              <li data-i18n="inside.controls">Controls with presets and hints</li>
+              <li data-i18n="inside.readings">Live readings and graphs</li>
+              <li data-i18n="inside.challenges">Challenges that check the physics, not the slider</li>
+              <li data-i18n="inside.theory">Theory, formulas and the meaning of every symbol</li>
+              <li data-i18n="inside.assumptions">Every simplification shown honestly</li>
+              <li data-i18n="inside.related">Links to related topics</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Levels -->
+      <section class="slide" id="levels" data-title="levels">
+        <div class="wide">
+          <p class="eyebrow" data-i18n="levels.eyebrow">Ages 10 to 18</p>
+          <h2 data-i18n="levels.title">Four levels, one lab</h2>
+          <p class="sub" data-i18n="levels.sub">The same topic grows with the student: more controls, readings, graphs and formulas at every level.</p>
+          <div class="levels">
+            <article><span class="badge">1</span><h3 data-i18n="levels.l1.title">Beginner</h3><p data-i18n="levels.l1.text">Few controls, big pictures, no heavy maths.</p></article>
+            <article><span class="badge">2</span><h3 data-i18n="levels.l2.title">Intermediate</h3><p data-i18n="levels.l2.text">More variables, formulas and live values.</p></article>
+            <article><span class="badge">3</span><h3 data-i18n="levels.l3.title">Advanced</h3><p data-i18n="levels.l3.text">Vectors, components, graphs and precise settings.</p></article>
+            <article><span class="badge">4</span><h3 data-i18n="levels.l4.title">Expert</h3><p data-i18n="levels.l4.text">Full control for teachers and curious minds.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Topic map -->
+      <section class="slide" id="topics" data-title="topics">
+        <div class="wide">
+          <p class="eyebrow" data-i18n="topics.eyebrow">The whole course</p>
+          <h2><span data-count="ready">65</span> <span data-i18n="topics.title">topics in eight areas</span></h2>
+          <div class="topic-map" id="topic-map"></div>
+        </div>
+      </section>
+
+      <!-- 7. Important: Andronikashvili -->
+      <section class="slide" id="important" data-title="important">
+        <div class="split">
+          <div>
+            <p class="eyebrow" data-i18n="important.eyebrow">Georgian science</p>
+            <h2 data-i18n="important.title">Andronikashvili's experiment</h2>
+            <p data-i18n="important.text">Elephter Andronikashvili, born in Tbilisi, measured the superfluid fraction of liquid helium with a stack of rotating discs. In dwall-e students repeat his experiment and see why the pendulum swings faster below 2.17 K.</p>
+            <p class="note" data-i18n="important.note">Topics that matter beyond the school course are marked "Important" in the app.</p>
+          </div>
+          <figure class="frame"><video data-clip="superfluid-helium" muted loop playsinline preload="none"></video><figcaption data-topic="superfluid-helium"></figcaption></figure>
+        </div>
+      </section>
+
+      <!-- 8. Reference -->
+      <section class="slide" id="reference" data-title="reference">
+        <div class="split reverse">
+          <figure class="frame shot"><img data-shot="formulas" alt="" loading="lazy" /></figure>
+          <div>
+            <p class="eyebrow" data-i18n="reference.eyebrow">Always at hand</p>
+            <h2 data-i18n="reference.title">Formulas and units</h2>
+            <p data-i18n="reference.text">All formulas from all topics in one searchable place, with the meaning of every symbol — filtered for the student's level. Next to them: a guide to every unit, from the metre to the electronvolt.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Principles -->
+      <section class="slide" id="principles" data-title="principles">
+        <div class="wide">
+          <p class="eyebrow" data-i18n="principles.eyebrow">Made for classrooms</p>
+          <h2 data-i18n="principles.title">Correct, calm and open to everyone</h2>
+          <div class="cards">
+            <article><h3 data-i18n="principles.correct.title">Physics you can trust</h3><p data-i18n="principles.correct.text">Every model is checked against analytic results by more than a thousand automated tests.</p></article>
+            <article><h3 data-i18n="principles.offline.title">Works offline</h3><p data-i18n="principles.offline.text">No internet and no account needed. Progress stays on the computer.</p></article>
+            <article><h3 data-i18n="principles.lang.title">Georgian and English</h3><p data-i18n="principles.lang.text">Every text, label and formula description in both languages.</p></article>
+            <article><h3 data-i18n="principles.modern.title">Up to date</h3><p data-i18n="principles.modern.text">From Galileo to gravitational waves, the Higgs boson and Artemis — with current data.</p></article>
+            <article><h3 data-i18n="principles.free.title">Free</h3><p data-i18n="principles.free.text">For students, teachers and schools — on Windows, macOS and Linux.</p></article>
+            <article><h3 data-i18n="principles.calm.title">Calm design</h3><p data-i18n="principles.calm.text">Light and dark themes, adjustable text size, information never shown by colour alone.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. Download -->
+      <section class="slide" id="download" data-title="download">
+        <div class="wide center">
+          <img src="assets/icon-256.png" alt="" width="96" height="96" />
+          <h2 data-i18n="download.title">Start exploring</h2>
+          <p class="sub" data-i18n="download.sub">The links always download the latest version.</p>
+          <div class="downloads">
+            <a class="dl" href="https://github.com/iibekaia/dwall-e/releases/latest/download/dwall-e-Setup.exe"><strong>Windows</strong><span data-i18n="download.setup">Installer</span><code>dwall-e-Setup.exe</code></a>
+            <a class="dl" href="https://github.com/iibekaia/dwall-e/releases/latest/download/dwall-e-Portable.exe"><strong>Windows</strong><span data-i18n="download.portable">Portable, no installation</span><code>dwall-e-Portable.exe</code></a>
+            <a class="dl" href="https://github.com/iibekaia/dwall-e/releases/latest/download/dwall-e-mac.dmg"><strong>macOS</strong><span data-i18n="download.mac">Intel and Apple Silicon</span><code>dwall-e-mac.dmg</code></a>
+            <a class="dl" href="https://github.com/iibekaia/dwall-e/releases/latest/download/dwall-e-linux.AppImage"><strong>Linux</strong><span data-i18n="download.linux">x64 AppImage</span><code>dwall-e-linux.AppImage</code></a>
+          </div>
+          <details class="firstrun">
+            <summary data-i18n="download.firstRun">First start: the app is not signed yet</summary>
+            <ul>
+              <li data-i18n="download.win">Windows: "Windows protected your PC" → More info → Run anyway.</li>
+              <li data-i18n="download.macHelp">macOS: right-click the app → Open → Open.</li>
+              <li data-i18n="download.linuxHelp">Linux: make the file executable (chmod +x) and run it.</li>
+            </ul>
+          </details>
+          <p class="footer"><a href="https://github.com/iibekaia/dwall-e/releases" data-i18n="download.releases">All versions</a> · <span>dwall-e</span> · <span class="motto-small">Explore physics. Understand reality.</span></p>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="lightbox" id="lightbox">
+      <button type="button" class="icon-btn close" data-i18n-title="close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg></button>
+      <video controls muted loop playsinline></video>
+      <p class="lightbox-title"></p>
+    </dialog>
+
+    <script src="data/topics.js"></script>
+    <script src="i18n.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

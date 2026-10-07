@@ -1,0 +1,12 @@
+{
+  "name": "dwall-e-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Presentation / landing page for the dwall-e physics lab: a static site with recordings of the simulations.",
+  "scripts": {
+    "data": "node tools/build-data.cjs",
+    "record": "node tools/run-electron.cjs tools/record.cjs",
+    "serve": "node tools/serve.cjs"
+  },
+  "license": "UNLICENSED"
+}

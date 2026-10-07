@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8" /><title>recorder</title></head>
+  <body>
+    <canvas id="c"></canvas>
+    <script>
+      // Draws the frames sent by record.cjs onto a canvas and encodes the canvas stream with MediaRecorder as
+      // MP4 (H.264). MP4 is used because Chromium writes its duration (its WebM files have none, which breaks looping),
+      // and every current browser plays it. Recording starts with the first real frame, so the video has no black lead-in.
+      const { ipcRenderer } = require('electron');
+      const canvas = document.getElementById('c');
+      const ctx = canvas.getContext('2d');
+      let settings = null;
+      let recorder = null;
+      let chunks = [];
+      const TYPE = 'video/mp4;codecs=avc1.640028';
+
+      ipcRenderer.on('start', (_e, s) => {
+        settings = s;
+        canvas.width = s.width;
+        canvas.height = s.height;
+        recorder = null;
+        chunks = [];
+      });
+
+      ipcRenderer.on('frame', async (_e, jpeg) => {
+        const bitmap = await createImageBitmap(new Blob([jpeg], { type: 'image/jpeg' }));
+        ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+        bitmap.close();
+        if (!recorder && settings) {
+          recorder = new MediaRecorder(canvas.captureStream(settings.fps), { mimeType: TYPE, videoBitsPerSecond: settings.bitrate });
+          recorder.ondataavailable = (e) => e.data.size && chunks.push(e.data);
+          recorder.start(250);
+        }
+      });
+
+      ipcRenderer.on('stop', () => {
+        if (!recorder) {
+          ipcRenderer.send('recorded', { mp4: new Uint8Array() });
+          return;
+        }
+        recorder.onstop = async () => {
+          ipcRenderer.send('recorded', { mp4: new Uint8Array(await new Blob(chunks, { type: TYPE }).arrayBuffer()) });
+          settings = null;
+        };
+        recorder.stop();
+      });
+    </script>
+  </body>
+</html>

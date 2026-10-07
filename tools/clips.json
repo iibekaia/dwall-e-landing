@@ -1,0 +1,24 @@
+{
+  "comment": "Simulations filmed for the landing page, from the dwall-e production build in full-screen view. actions: clickText = press the button with that text; select = choose that option value in a <select>; start = press Start (for simulations that wait for it).",
+  "width": 1280,
+  "fps": 30,
+  "bitrate": 2500000,
+  "theme": "dark",
+  "level": "advanced",
+  "clips": [
+    { "id": "solar-system", "seconds": 10 },
+    { "id": "projectile-motion", "seconds": 7, "actions": [{ "start": true }] },
+    { "id": "foucault-pendulum", "seconds": 9, "actions": [{ "start": true }] },
+    { "id": "prism", "seconds": 8, "actions": [{ "select": "flint" }] },
+    { "id": "double-slit", "seconds": 8, "actions": [{ "start": true }] },
+    { "id": "electric-motor", "seconds": 8 },
+    { "id": "induction", "seconds": 9 },
+    { "id": "photoelectric", "seconds": 8, "actions": [{ "clickText": "UV 250" }] },
+    { "id": "black-hole", "seconds": 8, "actions": [{ "start": true }] },
+    { "id": "superfluid-helium", "seconds": 9 },
+    { "id": "higgs-boson", "seconds": 9, "actions": [{ "start": true }] },
+    { "id": "atom-model", "seconds": 8 },
+    { "id": "lunar-mission", "seconds": 10, "actions": [{ "start": true }] },
+    { "id": "standing-waves", "seconds": 7 }
+  ]
+}
