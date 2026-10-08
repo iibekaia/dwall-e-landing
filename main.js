@@ -154,6 +154,36 @@
   slides.forEach((s) => slideObserver.observe(s));
   const go = (i) => slides[Math.max(0, Math.min(slides.length - 1, i))].scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
 
+  // One wheel/trackpad gesture advances one slide. Let tall slides scroll
+  // through their content before advancing, so every paragraph stays reachable.
+  let wheelLockedUntil = 0;
+  let lastWheelAt = 0;
+  let wheelDelta = 0;
+  window.addEventListener('wheel', (e) => {
+    if (e.ctrlKey || e.altKey || e.metaKey || lightbox.open || Math.abs(e.deltaX) > Math.abs(e.deltaY) || !e.deltaY) return;
+    const now = performance.now();
+    const idle = now - lastWheelAt > 180;
+    lastWheelAt = now;
+    if (now < wheelLockedUntil || (!idle && wheelLockedUntil)) {
+      e.preventDefault();
+      return;
+    }
+    wheelLockedUntil = 0;
+    if (idle) wheelDelta = 0;
+    const direction = Math.sign(e.deltaY);
+    const index = slides.reduce((best, slide, i) => slide.getBoundingClientRect().top <= 2 ? i : best, 0);
+    const rect = slides[index].getBoundingClientRect();
+    if ((direction > 0 && rect.bottom > window.innerHeight + 2 && rect.height > window.innerHeight + 2) ||
+        (direction < 0 && rect.top < -2)) return;
+    e.preventDefault();
+    const delta = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? window.innerHeight : 1);
+    wheelDelta = Math.sign(wheelDelta) === direction ? wheelDelta + delta : delta;
+    if (Math.abs(wheelDelta) < 24) return;
+    wheelDelta = 0;
+    wheelLockedUntil = now + (reducedMotion ? 200 : 900);
+    go(index + direction);
+  }, { passive: false });
+
   function togglePresentation() {
     if (!document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(() => {});
     else document.exitFullscreen?.();

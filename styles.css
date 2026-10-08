@@ -36,7 +36,10 @@ html {
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;
   scroll-padding-top: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
 body {
   margin: 0;
   background: var(--bg);
