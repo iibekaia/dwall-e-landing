@@ -17,6 +17,22 @@
   const fromUrl = new URLSearchParams(location.search).get('lang');
   let lang = LANGS.includes(fromUrl) ? fromUrl : LANGS.includes(stored) ? stored : 'ka';
 
+  /* ---------- Theme ---------- */
+  const themeToggle = document.getElementById('theme-toggle');
+  function updateThemeControl() {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    const label = lang === 'ka' ? (dark ? 'ღია თემაზე გადასვლა' : 'მუქ თემაზე გადასვლა') : (dark ? 'Switch to light theme' : 'Switch to dark theme');
+    themeToggle.title = label;
+    themeToggle.setAttribute('aria-label', label);
+  }
+  themeToggle.addEventListener('click', () => {
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f8f9fc' : '#0b0b10';
+    try { localStorage.setItem('dwall-e-landing-theme', theme); } catch {}
+    updateThemeControl();
+  });
+
   /* ---------- Videos ---------- */
   const media = (name) => `media/${lang}/${name}`;
   function setVideo(video, clip) {
@@ -101,6 +117,7 @@
     } catch {}
     const t = TEXT[lang];
     document.documentElement.lang = lang;
+    updateThemeControl();
     document.title = t.docTitle;
     document.querySelectorAll('[data-i18n]').forEach((el) => (el.textContent = t[el.dataset.i18n] ?? el.textContent));
     document.querySelectorAll('[data-i18n-title]').forEach((el) => {

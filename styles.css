@@ -31,6 +31,27 @@
   color-scheme: dark;
 }
 
+:root[data-theme='light'] {
+  --bg: #f8f9fc;
+  --bg-soft: #eef0f7;
+  --surface: #ffffff;
+  --line: #d5d9e6;
+  --text: #202336;
+  --muted: #555d73;
+  --accent: #4f46e5;
+  --accent-strong: #4f46e5;
+  --accent-soft: rgb(79 70 229 / 0.1);
+  color-scheme: light;
+}
+[data-theme='dark'] .theme-moon, [data-theme='light'] .theme-sun { display: none; }
+[data-theme='light'] .topbar { background: linear-gradient(to bottom, rgb(248 249 252 / 0.95), rgb(248 249 252 / 0.65)); }
+[data-theme='light'] .lang, [data-theme='light'] .icon-btn, [data-theme='light'] .btn-ghost { background: rgb(255 255 255 / 0.85); }
+[data-theme='light'] .hero-shade { background: radial-gradient(ellipse at center, rgb(248 249 252 / 0.75), rgb(248 249 252 / 0.96) 75%); }
+[data-theme='light'] .motto { background-image: linear-gradient(90deg, #3730a3, #4f46e5, #4338ca); }
+[data-theme='light'] .lead, [data-theme='light'] .checks li { color: var(--text); }
+[data-theme='light'] .area li { background: rgb(32 35 54 / 0.05); color: var(--text); }
+[data-theme='light'] .area li.important { background: var(--accent-soft); }
+
 * { box-sizing: border-box; }
 html {
   scroll-snap-type: y proximity;

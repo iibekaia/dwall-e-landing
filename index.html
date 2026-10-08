@@ -13,6 +13,7 @@
     <meta property="og:type" content="website" />
     <link rel="canonical" href="https://dwall-e.ge/" />
     <link rel="icon" href="assets/favicon.ico" />
+    <script src="theme.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -28,6 +29,10 @@
           <button type="button" data-lang="ka" aria-pressed="true">ქარ</button>
           <button type="button" data-lang="en" aria-pressed="false">ENG</button>
         </div>
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="თემის შეცვლა">
+          <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5" /></svg>
+          <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A9 9 0 0 1 10 3.5 9 9 0 1 0 20.5 14Z" /></svg>
+        </button>
         <button type="button" class="icon-btn" id="present" data-i18n-title="present" title="Presentation (F)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" /></svg>
         </button>
