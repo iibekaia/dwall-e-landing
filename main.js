@@ -4,6 +4,12 @@
   const DATA = window.TOPICS;
   const LANGS = ['ka', 'en'];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelector('.brand').addEventListener('click', (event) => {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    history.replaceState(null, '', location.pathname + location.search);
+    window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+  });
   const slides = [...document.querySelectorAll('.slide')];
   const topicById = new Map(DATA.categories.flatMap((c) => c.topics.map((t) => [t.id, t])));
 
