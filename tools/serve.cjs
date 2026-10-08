@@ -12,6 +12,7 @@ const TYPES = {
 
 http
   .createServer((req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
     const url = decodeURIComponent(req.url.split('?')[0]);
     let file = path.join(ROOT, url === '/' ? 'index.html' : url);
     if (!file.startsWith(ROOT) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
