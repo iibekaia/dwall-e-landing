@@ -13,7 +13,7 @@
   script.async = true;
   script.onload = () => {
     if (!window.posthog?.init) return;
-    window.posthog.init('phc_vq5DQuaSKqMbzoNFhTKeKatsfDWDBCY5tPJPDCti7w9E', {
+    window.posthog.init('phc_vq5DqoaSKqMbzoNFhTKekatsfDWDBCY5tPJPbCti7w9E', {
       api_host: 'https://eu.i.posthog.com',
       defaults: '2026-05-30',
       person_profiles: 'identified_only',
