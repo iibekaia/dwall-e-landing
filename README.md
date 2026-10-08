@@ -53,5 +53,5 @@ The site is plain static files, so any static host works:
 - **GitHub Pages:** push this folder to its own repository → Settings → Pages → "Deploy from a branch" → `main` / root.
 - **Netlify / Cloudflare Pages:** drag the folder into the dashboard, or connect the repository with no build command and `/` as the output folder.
 
-The download buttons point to `https://github.com/iibekaia/dwall-e/releases/latest/download/…`, so they always
+The download buttons point to `https://github.com/iibekaia/dwall-e-releases/releases/latest/download/…`, so they always
 serve the newest release.
