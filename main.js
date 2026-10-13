@@ -3,6 +3,9 @@
   const TEXT = window.I18N;
   const DATA = window.TOPICS;
   const LANGS = ['ka', 'en'];
+  // The site root, also from en/index.html (whose shared files live one folder up).
+  const ROOT = new URL('.', document.currentScript.src).href;
+  const PAGE_LANG = document.documentElement.lang;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelector('.brand').addEventListener('click', (event) => {
     if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
@@ -21,7 +24,8 @@
     }
   })();
   const fromUrl = new URLSearchParams(location.search).get('lang');
-  let lang = LANGS.includes(fromUrl) ? fromUrl : LANGS.includes(stored) ? stored : 'ka';
+  // An English page always opens in English; the Georgian one (the site root) follows the saved choice.
+  let lang = LANGS.includes(fromUrl) ? fromUrl : PAGE_LANG !== 'ka' ? PAGE_LANG : LANGS.includes(stored) ? stored : 'ka';
 
   /* ---------- Theme ---------- */
   const themeToggle = document.getElementById('theme-toggle');
@@ -40,7 +44,7 @@
   });
 
   /* ---------- Videos ---------- */
-  const media = (name) => `media/${lang}/${name}`;
+  const media = (name) => `${ROOT}media/${lang}/${name}`;
   function setVideo(video, clip) {
     video.poster = media(clip + '.jpg');
     video.replaceChildren(Object.assign(document.createElement('source'), { src: media(clip + '.mp4'), type: 'video/mp4' }));
@@ -134,12 +138,20 @@
     document.querySelectorAll('[data-count="ready"]').forEach((el) => (el.textContent = DATA.ready));
     document.querySelectorAll('img[data-shot]').forEach((img) => {
       img.src = media(`screen-${img.dataset.shot}.jpg`);
-      img.alt = t[`slide.${img.closest('.slide').id}`] ?? '';
+      const slide = img.closest('.slide').id;
+      img.alt = t[`${slide}.title`] ?? t[`slide.${slide}`] ?? '';
     });
     document.querySelectorAll('img[data-still]').forEach((img) => {
       img.src = media(`${img.dataset.still}.jpg`);
       img.alt = topicById.get(img.dataset.still)?.title[lang] ?? '';
     });
+    // Keep the address on the page of this language (/ or /en/), so shared links open in it.
+    if (location.protocol.startsWith('http')) {
+      const page = ROOT + (lang === 'ka' ? '' : lang + '/');
+      if (location.origin + location.pathname !== page || location.search) {
+        try { history.replaceState(null, '', page + location.hash); } catch {}
+      }
+    }
     document.querySelectorAll('.lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
     videos.forEach((v) => {
       setVideo(v, v.dataset.clip);

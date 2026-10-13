@@ -1,7 +1,8 @@
 // All page texts. Keys match the data-i18n attributes in index.html; topic names come from data/topics.json.
 window.I18N = {
   ka: {
-    docTitle: 'dwall-e · ინტერაქტიული ფიზიკის ლაბორატორია',
+    docTitle: 'dwall-e — ფიზიკის ვირტუალური ლაბორატორია და სიმულაციები',
+    'meta.description': 'ფიზიკის ინტერაქტიული ლაბორატორია მოსწავლეებისა და მასწავლებლებისთვის: {count} სიმულაცია ქართულად — მექანიკა, ელექტრობა, მაგნეტიზმი, ოპტიკა, ტალღები, თანამედროვე ფიზიკა და კოსმოსი, ელექტრული წრედების ასაწყობი ლაბორატორია. მუშაობს ინტერნეტის გარეშე.',
     skip: 'შიგთავსზე გადასვლა',
     present: 'პრეზენტაცია (F)',
     next: 'შემდეგი',
@@ -117,7 +118,8 @@ window.I18N = {
     'slide.download': 'გადმოწერა',
   },
   en: {
-    docTitle: 'dwall-e · Interactive physics lab',
+    docTitle: 'dwall-e — Virtual Physics Lab and Simulations for Schools',
+    'meta.description': 'An interactive physics lab for students and teachers: {count} simulations in English and Georgian — mechanics, electricity, magnetism, optics, waves, modern physics and space, plus a lab for building electric circuits. Works offline.',
     skip: 'Skip to content',
     present: 'Presentation (F)',
     next: 'Next',

@@ -8,13 +8,14 @@ const PORT = Number(process.env.PORT ?? 5173);
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.mp4': 'video/mp4', '.webm': 'video/webm',
+  '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8',
 };
 
 http
   .createServer((req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     const url = decodeURIComponent(req.url.split('?')[0]);
-    let file = path.join(ROOT, url === '/' ? 'index.html' : url);
+    let file = path.join(ROOT, url.endsWith('/') ? url + 'index.html' : url);
     if (!file.startsWith(ROOT) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
       res.writeHead(404).end('Not found');
       return;
