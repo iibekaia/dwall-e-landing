@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-07",
- "count": 65,
- "ready": 65,
+ "generated": "2026-10-13",
+ "count": 77,
+ "ready": 77,
  "categories": [
   {
    "id": "mechanics",
@@ -258,6 +258,19 @@
      }
     },
     {
+     "id": "fluid-flow",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "სითხის დინება და ბერნულის კანონი",
+      "en": "Fluid flow and Bernoulli’s principle"
+     },
+     "summary": {
+      "ka": "მილის განივკვეთის, დინების სიჩქარისა და წნევის ურთიერთკავშირი.",
+      "en": "The relationship between pipe cross-section, flow speed and pressure."
+     }
+    },
+    {
      "id": "spring",
      "ready": true,
      "important": false,
@@ -281,6 +294,19 @@
      "summary": {
       "ka": "ძაფზე ჩამოკიდებული ტვირთის რხევა. გაარკვიე, რაზეა დამოკიდებული რხევის პერიოდი და რაზე — არა.",
       "en": "Swing a weight on a string. Find what the period depends on — and what it does not."
+     }
+    },
+    {
+     "id": "forced-oscillations",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "იძულებითი რხევები და რეზონანსი",
+      "en": "Forced oscillations and resonance"
+     },
+     "summary": {
+      "ka": "გარე ძალის სიხშირისა და ჩაქრობის გავლენა რხევის ამპლიტუდაზე.",
+      "en": "How driving frequency and damping affect oscillation amplitude."
      }
     },
     {
@@ -356,6 +382,32 @@
       "ka": "ცილინდრში მოთავსებული აირი შეკუმშე, გააცხელე ან გააცივე და დააკვირდი, როგორ იცვლება ერთად მისი წნევა, მოცულობა და ტემპერატურა — ბოილ-მარიოტის, შარლისა და გეი-ლუსაკის კანონები და იდეალური აირის კანონი pV = nRT.",
       "en": "Squeeze, heat or cool a gas in a cylinder and watch its pressure, volume and temperature change together — the laws of Boyle, Charles and Gay-Lussac and the ideal gas law pV = nRT."
      }
+    },
+    {
+     "id": "first-law-thermodynamics",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "თერმოდინამიკის პირველი კანონი",
+      "en": "First law of thermodynamics"
+     },
+     "summary": {
+      "ka": "სითბო, მუშაობა და აირის შინაგანი ენერგიის ცვლილება დგუშიან ცილინდრში.",
+      "en": "Heat, work and changes in gas internal energy in a piston cylinder."
+     }
+    },
+    {
+     "id": "heat-engine",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "სითბური ძრავა",
+      "en": "Heat engines"
+     },
+     "summary": {
+      "ka": "ტემპერატურების გავლენა სითბური ძრავის მუშაობასა და მარგი ქმედების კოეფიციენტზე.",
+      "en": "How reservoir temperatures affect work output and thermal efficiency."
+     }
     }
    ]
   },
@@ -403,6 +455,19 @@
      "summary": {
       "ka": "ნახე მუხტების უხილავი ველი წირებითა და ისრებით, საცდელი მუხტი ნებისმიერ ადგილას დააჩერე ძალის გასაზომად ან გაუშვი და უყურე, როგორ დაფრინავს დიპოლის, წყვილისა და კონდენსატორის ფირფიტების ველში.",
       "en": "See the invisible field of charges as lines and arrows, hold a test charge anywhere to measure the force, or release it and watch it fly through dipoles, pairs and capacitor plates."
+     }
+    },
+    {
+     "id": "capacitor",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "კონდენსატორი და ტევადობა",
+      "en": "Capacitors and capacitance"
+     },
+     "summary": {
+      "ka": "ფირფიტების ზომის, დაშორებისა და დიელექტრიკის გავლენა ტევადობასა და დაგროვილ ენერგიაზე.",
+      "en": "How plate size, separation and dielectric affect capacitance and stored energy."
      }
     },
     {
@@ -464,6 +529,19 @@
      "summary": {
       "ka": "გამოიკვლიე ღეროვანი მაგნიტის ველი და დააკვირდი კომპასის ისრის გასწორებას.",
       "en": "Explore a bar magnet's field and watch a compass align with it."
+     }
+    },
+    {
+     "id": "lorentz-force",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "ლორენცის ძალა",
+      "en": "Lorentz force"
+     },
+     "summary": {
+      "ka": "დამუხტული ნაწილაკის მოძრაობა მაგნიტურ ველში და მუხტის ნიშნის გავლენა ტრაექტორიაზე.",
+      "en": "Motion of a charged particle in a magnetic field and the effect of charge sign on its path."
      }
     },
     {
@@ -715,6 +793,19 @@
    },
    "topics": [
     {
+     "id": "rutherford-scattering",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "რეზერფორდის ექსპერიმენტი",
+      "en": "Rutherford’s experiment"
+     },
+     "summary": {
+      "ka": "ალფა-ნაწილაკების გაბნევა და ატომის მცირე, დადებითად დამუხტული ბირთვი.",
+      "en": "Alpha-particle scattering and the atom’s small, positively charged nucleus."
+     }
+    },
+    {
      "id": "atom-model",
      "ready": true,
      "important": false,
@@ -725,6 +816,19 @@
      "summary": {
       "ka": "ააწყვე ატომები პროტონებისგან, ნეიტრონებისა და ელექტრონებისგან 3D-ში და აღმოაჩინე ელემენტები, იონები და იზოტოპები.",
       "en": "Build atoms from protons, neutrons and electrons in 3D and discover elements, ions and isotopes."
+     }
+    },
+    {
+     "id": "atomic-spectra",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "ატომის ენერგეტიკული დონეები და სპექტრი",
+      "en": "Atomic energy levels and spectra"
+     },
+     "summary": {
+      "ka": "ენერგეტიკულ დონეებს შორის გადასვლები და გამოსხივების სპექტრული ხაზები.",
+      "en": "Transitions between energy levels and the resulting emission lines."
      }
     },
     {
@@ -741,6 +845,19 @@
      }
     },
     {
+     "id": "quantum-tunneling",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "კვანტური გვირაბული ეფექტი",
+      "en": "Quantum tunneling"
+     },
+     "summary": {
+      "ka": "ნაწილაკის ენერგიისა და ბარიერის ზომის გავლენა ბარიერში გავლის ალბათობაზე.",
+      "en": "How particle energy and barrier dimensions affect transmission probability."
+     }
+    },
+    {
      "id": "radioactivity",
      "ready": true,
      "important": false,
@@ -751,6 +868,19 @@
      "summary": {
       "ka": "დააკვირდი, როგორ იშლება არამდგრადი ატომები შემთხვევით, შეადარე რაოდენობა ნახევარდაშლის კანონს და ნახე, რატომ მიჰყვება დიდი ნიმუში გლუვ მრუდს.",
       "en": "Watch unstable atoms decay by chance, compare the count with the law of half-life and see why large samples follow a smooth curve."
+     }
+    },
+    {
+     "id": "nuclear-fission",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "ბირთვული გაყოფა და ჯაჭვური რეაქცია",
+      "en": "Nuclear fission and chain reactions"
+     },
+     "summary": {
+      "ka": "ბირთვის გაყოფა, ნეიტრონების გამრავლება და ჯაჭვური რეაქციის მართვა.",
+      "en": "Nuclear splitting, neutron multiplication and control of a chain reaction."
      }
     },
     {
@@ -803,6 +933,32 @@
      "summary": {
       "ka": "გამოიკვლიე მოვლენათა ჰორიზონტი, გრავიტაციული საათები და სინათლის წითელი წანაცვლება.",
       "en": "Explore the event horizon, gravitational clocks and light redshift."
+     }
+    },
+    {
+     "id": "singularity",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "სინგულარობა",
+      "en": "Singularity"
+     },
+     "summary": {
+      "ka": "დააკვირდი რადიალურ ვარდნას შავი ხვრელის ჰორიზონტის გავლით და შეისწავლე კლასიკური მოდელის ზღვარი.",
+      "en": "Follow radial free fall through a black-hole horizon and explore the limits of the classical model."
+     }
+    },
+    {
+     "id": "quantum-black-hole",
+     "ready": true,
+     "important": true,
+     "title": {
+      "ka": "კვანტური შავი ხვრელი — დვალი და გომესი",
+      "en": "Quantum black hole — Dvali and Gomez"
+     },
+     "summary": {
+      "ka": "თეორიულ კვანტურ N-მოდელში შავი ხვრელის ზომა და მასა კვანტების საშუალო რაოდენობის შემცირებისას მცირდება, ტემპერატურა კი იზრდება.",
+      "en": "In the theoretical quantum N-portrait, black-hole size and mass decrease as the mean number of quanta falls, while temperature rises."
      }
     },
     {

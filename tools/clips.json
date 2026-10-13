@@ -19,6 +19,7 @@
     { "id": "higgs-boson", "seconds": 9, "actions": [{ "start": true }] },
     { "id": "atom-model", "seconds": 8 },
     { "id": "lunar-mission", "seconds": 10, "actions": [{ "start": true }] },
-    { "id": "standing-waves", "seconds": 7 }
+    { "id": "standing-waves", "seconds": 7 },
+    { "id": "quantum-black-hole", "seconds": 10, "actions": [{ "start": true }] }
   ]
 }

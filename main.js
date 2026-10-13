@@ -136,6 +136,10 @@
       img.src = media(`screen-${img.dataset.shot}.jpg`);
       img.alt = t[`slide.${img.closest('.slide').id}`] ?? '';
     });
+    document.querySelectorAll('img[data-still]').forEach((img) => {
+      img.src = media(`${img.dataset.still}.jpg`);
+      img.alt = topicById.get(img.dataset.still)?.title[lang] ?? '';
+    });
     document.querySelectorAll('.lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
     videos.forEach((v) => {
       setVideo(v, v.dataset.clip);

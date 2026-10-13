@@ -13,7 +13,7 @@ the simulations. No build step and no runtime dependencies.
 |---|---|
 | `index.html`, `styles.css`, `main.js` | The page: full-screen slides, language switch, videos, topic map |
 | `i18n.js` | All page texts in Georgian and English |
-| `data/topics.json`, `data/topics.js` | The 65 topics (titles, summaries, categories) — generated |
+| `data/topics.json`, `data/topics.js` | All 77 topics (titles, summaries, categories) — generated |
 | `media/ka`, `media/en` | Videos (`.mp4`, H.264), posters (`.jpg`) and app screenshots, per language — generated |
 | `assets/` | Logo, favicon and the Noto Sans Georgian font (SIL OFL, see `assets/fonts/OFL.txt`) |
 | `tools/` | Scripts that regenerate the data and the media from the dwall-e project |
@@ -45,6 +45,12 @@ npm run record    # all videos, posters and screenshots (needs "npm run build" i
 nothing extra is downloaded. Which simulations are filmed, for how long and with which actions is set in
 `tools/clips.json`; `ONLY=prism,induction npm run record` re-records just those clips, `LANGS=ka` only one language.
 Each run writes `tools/record.log`; a clip marked "almost no motion" usually needs a `start` action.
+`CLIPS=0` takes only the screenshots. On a machine without a usable GPU (3D scenes film black) add `SOFTWARE_GL=1`:
+WebGL is then drawn on the CPU, which is too slow for smooth videos but fine for screenshots and stills.
+
+`media/<lang>/quantum-black-hole.jpg` is a still frame for the Dvali slide (taken from that clip with ffmpeg). To show it
+as a video instead, record it on a machine with a GPU (`ONLY=quantum-black-hole npm run record`) and change the slide's
+`<img data-still>` to a `<video data-clip>` like the others.
 
 ## Publishing
 

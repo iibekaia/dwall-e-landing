@@ -10,7 +10,9 @@
  * contains the video encoders.
  *
  * Environment (optional): DWALLE = path of the dwall-e project (default ../dwall-e),
- * ONLY = comma-separated clip ids, LANGS = ka,en, SCREENS = 0 to skip the screenshots.
+ * ONLY = comma-separated clip ids, LANGS = ka,en, SCREENS = 0 to skip the screenshots, CLIPS = 0 to take
+ * only the screenshots,
+ * SOFTWARE_GL = 1 to draw WebGL on the CPU (SwiftShader) on machines without a usable GPU, where 3D scenes come out black.
  */
 const { app, BrowserWindow, ipcMain } = require('electron');
 const http = require('node:http');
@@ -25,11 +27,18 @@ const CONFIG = JSON.parse(fs.readFileSync(path.join(HERE, 'clips.json'), 'utf8')
 const ONLY = process.env.ONLY ? process.env.ONLY.split(',') : null;
 const LANGS = (process.env.LANGS ?? 'ka,en').split(',');
 const SCREENS = process.env.SCREENS !== '0';
+const CLIPS = process.env.CLIPS !== '0';
 const LOG = path.join(HERE, 'record.log');
+const SOFTWARE_GL = process.env.SOFTWARE_GL === '1';
+if (SOFTWARE_GL) {
+  app.commandLine.appendSwitch('use-angle', 'swiftshader');
+  app.commandLine.appendSwitch('enable-unsafe-swiftshader');
+  app.commandLine.appendSwitch('ignore-gpu-blocklist');
+}
 const TYPES = { '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2', '.ico': 'image/x-icon' };
 const TEXT = {
-  ka: { fullscreen: 'სრულ ეკრანზე', start: 'დაწყება' },
-  en: { fullscreen: 'Full screen', start: 'Play' },
+  ka: { fullscreen: 'სრულ ეკრანზე', start: 'დაწყება', lab: ['სიბრტყის დამატება', 'სხეულის დამატება', 'სიჩქარის ვექტორის ჩვენება', 'გაშვება'] },
+  en: { fullscreen: 'Full screen', start: 'Play', lab: ['Add ramp', 'Add body', 'Show velocity vector', 'Run'] },
 };
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -65,10 +74,11 @@ const HELPERS = `
   true;
 `;
 
-async function openApp(win, base, lang, route) {
+// annotations: false hides the drawing pen from the films; the screenshots keep it, as the app shows it.
+async function openApp(win, base, lang, route, { annotations = true } = {}) {
   await win.loadURL(base + '/');
   await win.webContents.executeJavaScript(
-    `localStorage.setItem('dwall-e:settings', JSON.stringify({ version: 1, theme: '${CONFIG.theme}', language: '${lang}', level: '${CONFIG.level}', levelChosen: true, fontScale: 1, reducedMotion: false, volume: 0 })); true`,
+    `localStorage.setItem('dwall-e:settings', JSON.stringify({ version: 1, theme: '${CONFIG.theme}', language: '${lang}', level: '${CONFIG.level}', levelChosen: true, fontScale: 1, reducedMotion: false, theoryMarker: true, annotations: ${annotations}, volume: 0 })); true`,
   );
   await win.loadURL(base + route);
   await wait(2500);
@@ -77,7 +87,7 @@ async function openApp(win, base, lang, route) {
 
 async function recordClip(win, recorder, base, lang, clip, outDir) {
   const t = TEXT[lang];
-  await openApp(win, base, lang, '/sim/' + clip.id);
+  await openApp(win, base, lang, '/sim/' + clip.id, { annotations: false });
   for (const action of clip.actions ?? []) {
     if (action.select) await win.webContents.executeJavaScript(`window.__select(${JSON.stringify(action.select)})`);
     if (action.clickText) await win.webContents.executeJavaScript(`(window.__find(${JSON.stringify(action.clickText)}) || {}).click?.(); true`);
@@ -88,7 +98,7 @@ async function recordClip(win, recorder, base, lang, clip, outDir) {
   await win.webContents.executeJavaScript(
     `(() => { const b = window.__find(${JSON.stringify(t.fullscreen)}); if (b) { b.click(); setTimeout(() => (b.style.visibility = 'hidden'), 50); } return true; })()`,
   );
-  await wait(1200);
+  await wait(2000);
   if ((clip.actions ?? []).some((a) => a.start)) {
     await win.webContents.executeJavaScript(`(window.__find(${JSON.stringify(t.start)}) || {}).click?.(); true`);
   }
@@ -127,9 +137,18 @@ async function recordClip(win, recorder, base, lang, clip, outDir) {
 
 async function screenshots(base, lang, outDir) {
   const win = new BrowserWindow({ show: false, width: 1440, height: 900, webPreferences: { offscreen: true, backgroundThrottling: false } });
-  for (const [name, route] of [['home', '/'], ['simulation', '/sim/prism'], ['formulas', '/formulas'], ['category', '/topics/mechanics']]) {
+  const shots = [['home', '/'], ['simulation', '/sim/prism'], ['formulas', '/formulas'], ['category', '/topics/mechanics'], ['laboratory', '/laboratory', TEXT[lang].lab]];
+  for (const [name, route, clicks = []] of shots) {
     await openApp(win, base, lang, route);
-    await wait(1500);
+    // The laboratory starts empty: put a ramp and a body in it and let the body roll for a moment.
+    for (const text of clicks) {
+      await win.webContents.executeJavaScript(`(window.__find(${JSON.stringify(text)}) || {}).click?.(); true`);
+      await wait(400);
+    }
+    if (clicks.length) {
+      await win.webContents.executeJavaScript(`document.activeElement?.blur(); document.querySelectorAll('*').forEach((el) => el.scrollTop && (el.scrollTop = 0)); true`);
+      await wait(300);
+    } else await wait(1500);
     const image = await win.webContents.capturePage();
     fs.writeFileSync(path.join(outDir, `screen-${name}.jpg`), image.resize({ width: 1440, quality: 'best' }).toJPEG(84));
     log(lang, 'screen', name);
@@ -153,7 +172,7 @@ app.whenReady().then(async () => {
       fs.mkdirSync(outDir, { recursive: true });
       const win = new BrowserWindow({ show: false, width: 1440, height: 900, webPreferences: { offscreen: true, backgroundThrottling: false } });
       win.webContents.setFrameRate(CONFIG.fps);
-      for (const clip of CONFIG.clips.filter((c) => !ONLY || ONLY.includes(c.id))) {
+      for (const clip of CONFIG.clips.filter((c) => CLIPS && (!ONLY || ONLY.includes(c.id)))) {
         try {
           await recordClip(win, recorder, base, lang, clip, outDir);
         } catch (e) {
