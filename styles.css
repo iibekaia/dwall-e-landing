@@ -125,6 +125,7 @@ p { margin: 0 0 1em; }
 .center .sub { margin-inline: auto; }
 .split { width: min(1240px, 100%); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
 .split.reverse { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+.split.even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .split p { color: var(--muted); font-size: 1.08rem; }
 .note { font-size: 0.95rem !important; border-left: 3px solid var(--accent); padding-left: 14px; }
 
@@ -168,6 +169,11 @@ figcaption { padding: 10px 14px; font-size: 0.9rem; color: var(--muted); backgro
 .checks { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
 .checks li { padding-left: 32px; position: relative; color: #d4d4d8; }
 .checks li::after { content: ''; position: absolute; left: 6px; top: calc(0.35em + 2px); width: 6px; height: 11px; border: solid var(--accent); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.benches { margin-top: clamp(20px, 3vh, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.benches > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 22px; }
+.benches h3 { display: flex; align-items: center; gap: 10px; margin: 0; }
+.benches .checks { margin-top: 14px; gap: 8px; }
+.pill { padding: 2px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
 .levels, .cards { margin-top: 28px; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
 .levels article, .cards article { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
 .levels p, .cards p { color: var(--muted); margin: 0; }
