@@ -2,6 +2,12 @@
 (() => {
   // Keep local previews out of production visitor counts.
   if (location.protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return;
+  // Microsoft Clarity (public project id), landing page only — the desktop app has no analytics.
+  window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+  const clarity = document.createElement('script');
+  clarity.src = 'https://www.clarity.ms/tag/z5eky58knr';
+  clarity.async = true;
+  document.head.append(clarity);
   const pending = [];
   let ready = false;
   const capture = (event, properties) => {
