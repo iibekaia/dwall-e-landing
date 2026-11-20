@@ -114,10 +114,23 @@ async function recordClip(win, recorder, base, lang, clip, outDir) {
   let recording = false;
   let poster = null;
   let frames = 0;
+  let firstFrame = null;
+  let changedPixels = 0;
   const onPaint = (_e, _dirty, image) => {
     if (!recording) return;
     const crop = image.crop(rect);
     frames++;
+    if (clip.requireMotion) {
+      const pixels = crop.resize({ width: 160, height: 90 }).toBitmap();
+      if (!firstFrame) firstFrame = pixels;
+      else if (frames > CONFIG.fps * 2) {
+        let changed = 0;
+        for (let i = 0; i < pixels.length; i += 4) {
+          if (Math.abs(pixels[i] - firstFrame[i]) + Math.abs(pixels[i + 1] - firstFrame[i + 1]) + Math.abs(pixels[i + 2] - firstFrame[i + 2]) > 90) changed++;
+        }
+        changedPixels = Math.max(changedPixels, changed);
+      }
+    }
     if (frames === Math.round(CONFIG.fps * 1.5) || !poster) poster = crop.resize({ width, height, quality: 'best' }).toJPEG(85);
     recorder.webContents.send('frame', crop.toJPEG(92));
   };
@@ -132,9 +145,11 @@ async function recordClip(win, recorder, base, lang, clip, outDir) {
   recorder.webContents.send('stop');
   const data = await done;
   win.webContents.off('paint', onPaint);
+  if (clip.requireMotion && changedPixels < 30) throw new Error(`Static recording for ${clip.id}: only ${changedPixels} changed pixels`);
   fs.writeFileSync(path.join(outDir, clip.id + '.mp4'), Buffer.from(data.mp4));
   if (poster) fs.writeFileSync(path.join(outDir, clip.id + '.jpg'), poster);
   log(lang, clip.id, `${width}x${height}`, 'frames', frames, frames < clip.seconds * 5 ? 'WARNING: almost no motion' : 'ok', 'mp4', data.mp4.byteLength);
+  if (clip.requireMotion) log(lang, clip.id, 'motion verified:', changedPixels, 'changed pixels at 160x90');
 }
 
 async function screenshots(base, lang, outDir) {
