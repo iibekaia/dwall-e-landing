@@ -140,8 +140,6 @@ figcaption { padding: 10px 14px; font-size: 0.9rem; color: var(--muted); backgro
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.55; }
 .hero-shade { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgb(11 11 16 / 0.35), rgb(11 11 16 / 0.9) 75%); }
 .hero-content { position: relative; display: grid; justify-items: center; max-width: 860px; }
-.hero-online { margin-top: 18px; color: var(--accent); text-underline-offset: 4px; font-weight: 600; }
-.hero-online-note { margin: 6px 0 0; font-size: 0.875rem; color: var(--muted); }
 .hero .cta { margin-bottom: 0; }
 .hero .facts { margin-top: 24px; }
 @media (max-height: 800px) and (min-width: 700px) {
@@ -247,7 +245,10 @@ body.presenting .topbar:hover, body.presenting .topbar:focus-within { opacity: 1
 }
 @media (max-width: 520px) {
   body { font-size: 16px; }
-  .topbar .btn-sm { display: none; }
+  .topbar .brand span, .topbar #present { display: none; }
+  .topbar-actions { gap: 6px; }
+  .topbar .lang button { padding-inline: 8px; }
+  .topbar .btn-sm { padding-inline: 10px; white-space: nowrap; }
   .gallery { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
