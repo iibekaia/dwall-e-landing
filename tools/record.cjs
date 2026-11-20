@@ -30,6 +30,7 @@ const SCREENS = process.env.SCREENS !== '0';
 const CLIPS = process.env.CLIPS !== '0';
 const LOG = path.join(HERE, 'record.log');
 const SOFTWARE_GL = process.env.SOFTWARE_GL === '1';
+let failures = 0;
 if (SOFTWARE_GL) {
   app.commandLine.appendSwitch('use-angle', 'swiftshader');
   app.commandLine.appendSwitch('enable-unsafe-swiftshader');
@@ -102,7 +103,8 @@ async function recordClip(win, recorder, base, lang, clip, outDir) {
   // Keep the presentation background free of planet names, dates and scale captions.
   if (clip.hideLabels) await win.webContents.insertCSS('.sim-label { display: none !important; }');
   if ((clip.actions ?? []).some((a) => a.start)) {
-    await win.webContents.executeJavaScript(`(window.__find(${JSON.stringify(t.start)}) || {}).click?.(); true`);
+    const started = await win.webContents.executeJavaScript(`(() => { const button = window.__find(${JSON.stringify(t.start)}); if (!button) return false; button.click(); return true; })()`);
+    if (!started) throw new Error('Play button not found for ' + clip.id);
   }
   await wait(400);
   const rect = await win.webContents.executeJavaScript('window.__scene()');
@@ -120,8 +122,8 @@ async function recordClip(win, recorder, base, lang, clip, outDir) {
     if (!recording) return;
     const crop = image.crop(rect);
     frames++;
-    if (clip.requireMotion) {
-      const pixels = crop.resize({ width: 160, height: 90 }).toBitmap();
+    if (clip.requireMotion && (!firstFrame || frames % CONFIG.fps === 0)) {
+      const pixels = crop.resize({ width: 640, height: 360 }).toBitmap();
       if (!firstFrame) firstFrame = pixels;
       else if (frames > CONFIG.fps * 2) {
         let changed = 0;
@@ -149,7 +151,7 @@ async function recordClip(win, recorder, base, lang, clip, outDir) {
   fs.writeFileSync(path.join(outDir, clip.id + '.mp4'), Buffer.from(data.mp4));
   if (poster) fs.writeFileSync(path.join(outDir, clip.id + '.jpg'), poster);
   log(lang, clip.id, `${width}x${height}`, 'frames', frames, frames < clip.seconds * 5 ? 'WARNING: almost no motion' : 'ok', 'mp4', data.mp4.byteLength);
-  if (clip.requireMotion) log(lang, clip.id, 'motion verified:', changedPixels, 'changed pixels at 160x90');
+  if (clip.requireMotion) log(lang, clip.id, 'motion verified:', changedPixels, 'changed pixels at 640x360');
 }
 
 async function screenshots(base, lang, outDir) {
@@ -193,6 +195,7 @@ app.whenReady().then(async () => {
         try {
           await recordClip(win, recorder, base, lang, clip, outDir);
         } catch (e) {
+          failures++;
           log('FAILED', lang, clip.id, e.stack);
         }
       }
@@ -201,8 +204,9 @@ app.whenReady().then(async () => {
     }
     log('DONE');
   } catch (e) {
+    failures++;
     log('ERROR', e.stack);
   }
   server.close();
-  app.exit(0);
+  app.exit(failures ? 1 : 0);
 });

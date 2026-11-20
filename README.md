@@ -60,6 +60,8 @@ npm run record    # all videos, posters and screenshots (needs "npm run build" i
 nothing extra is downloaded. Which simulations are filmed, for how long and with which actions is set in
 `tools/clips.json`; `ONLY=prism,induction npm run record` re-records just those clips, `LANGS=ka` only one language.
 Each run writes `tools/record.log`; a clip marked "almost no motion" usually needs a `start` action.
+Every configured clip explicitly presses Play before recording and requires visible pixel changes between frames.
+A missing Play button or a static scene fails the recording, preserves the previous clip, and makes the command exit unsuccessfully.
 `CLIPS=0` takes only the screenshots. On a machine without a usable GPU (3D scenes film black) add `SOFTWARE_GL=1`:
 WebGL is then drawn on the CPU, which is too slow for smooth videos but fine for screenshots and stills.
 
