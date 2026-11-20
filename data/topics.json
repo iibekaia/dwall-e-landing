@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-13",
- "count": 77,
- "ready": 77,
+ "generated": "2026-11-20",
+ "count": 81,
+ "ready": 81,
  "categories": [
   {
    "id": "mechanics",
@@ -19,8 +19,8 @@
       "en": "Uniform Motion"
      },
      "summary": {
-      "ka": "მუდმივი სიჩქარით მოძრავი მანქანები: ტოლ დროში — ტოლი მანძილი. იპოვე სიჩქარე, მანძილი და დრო და შეაჯიბრე ორი მანქანა.",
-      "en": "Cars at constant speed: equal distances in equal times. Find speed, distance and time, and race two cars."
+      "ka": "მუდმივი სიჩქარით მოძრავი ველოსიპედები: ტოლ დროში — ტოლი მანძილი. იპოვე სიჩქარე, მანძილი და დრო და შეაჯიბრე ორი ველოსიპედი.",
+      "en": "Bicycles at constant speed: equal distances in equal times. Find speed, distance and time, and race two bicycles."
      }
     },
     {
@@ -110,8 +110,8 @@
       "en": "Newton’s Third Law: Action and Reaction"
      },
      "summary": {
-      "ka": "როცა ერთი სხეული მეორეს აწვება, მეორე მას ტოლი სიდიდისა და საპირისპირო მიმართულების ძალით აწვება. ეს ძალები სხვადასხვა სხეულზე მოქმედებს.",
-      "en": "When one body pushes another, the second pushes back with an equal and opposite force. The forces act on different bodies."
+      "ka": "გაისროლე ბურთი წინ და დააკვირდი ზარბაზნის უკუცემას. შეადარე ტოლი ძალები, განსხვავებული აჩქარებები და ჰორიზონტალური იმპულსი.",
+      "en": "Fire a ball forwards and watch the cannon recoil. Compare equal forces, different accelerations and horizontal momentum."
      }
     },
     {
@@ -177,6 +177,19 @@
      "summary": {
       "ka": "დააჯახე ორი სხეული, შეადარე იმპულსი და ენერგია, შემდეგ კი კედლებს შორის დაჯახება გაიმეორე.",
       "en": "Collide two bodies, compare momentum and energy, and repeat the collision between walls."
+     }
+    },
+    {
+     "id": "newtons-cradle",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "ნიუტონის აკვანი",
+      "en": "Newton’s Cradle"
+     },
+     "summary": {
+      "ka": "გაუშვი ერთი ან ორი ბურთულა და დააკვირდი მოძრაობის გადაცემას ხუთ ბურთულაში. შეადარე იმპულსი, ენერგია და რხევის დრო.",
+      "en": "Release one or two balls and watch motion pass through a row of five. Compare momentum, energy and swing timing."
      }
     },
     {
@@ -340,8 +353,8 @@
       "en": "Thermal Expansion"
      },
      "summary": {
-      "ka": "გაათბე ღერო ან ბიმეტალური ფირფიტა და აღმოაჩინე, რატომ სჭირდება ხიდებს ღრეჩოები და როგორ მუშაობს თერმოსტატი.",
-      "en": "Heat a rod or a bimetallic strip and discover why bridges need gaps and how thermostats work."
+      "ka": "გააცხელე და გააგრილე ბურთი და რგოლი 3D-ში: ნახე, რატომ ვერ გადის ცხელი ბურთი და როგორ ეხმარება რგოლის გათბობა.",
+      "en": "Heat and cool a ball and ring in 3D: discover why a hot ball gets stuck and why heating the ring opens the way."
      }
     },
     {
@@ -786,6 +799,106 @@
    ]
   },
   {
+   "id": "space",
+   "name": {
+    "ka": "კოსმოსი",
+    "en": "Space"
+   },
+   "topics": [
+    {
+     "id": "solar-system",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "მზის სისტემა",
+      "en": "Solar System"
+     },
+     "summary": {
+      "ka": "გაეცანი მზესა და რვა პლანეტას 3D-ში, მათ რეალურ ორბიტებზე — დღევანდელი მდებარეობიდან.",
+      "en": "Explore the Sun and the eight planets in 3D on their real orbits — starting from where they are today."
+     }
+    },
+    {
+     "id": "moon-phases",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "მთვარის ფაზები",
+      "en": "Moon Phases"
+     },
+     "summary": {
+      "ka": "გაუშვი მთვარე დედამიწის გარშემო და ნახე, რატომ იზრდება და კლებულობს: მზე ყოველთვის ერთ ნახევარს ანათებს, ჩვენ კი ამ ნახევარს სხვადასხვა მხრიდან ვხედავთ. გაიგე, რა ორი სახის თვე არსებობს და რატომაა დაბნელება იშვიათი.",
+      "en": "Send the Moon round the Earth and see why it waxes and wanes: the Sun always lights one half, and we see that half from a changing side. Explore the two kinds of month and why eclipses are rare."
+     }
+    },
+    {
+     "id": "seasons",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "წელიწადის დროები",
+      "en": "Seasons"
+     },
+     "summary": {
+      "ka": "დახარე დედამიწის ღერძი, აირჩიე განედი და თარიღი და დააკვირდი, როგორ იცვლება მზის სიმაღლე, დღის ხანგრძლივობა და წელიწადის დროები, სანამ დედამიწა მზის გარშემო მოძრაობს.",
+      "en": "Tilt the Earth's axis, pick a latitude and a date, and watch the Sun's height, the length of the day and the seasons change as the Earth travels round the Sun."
+     }
+    },
+    {
+     "id": "kepler-laws",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "კეპლერის კანონები",
+      "en": "Kepler’s Laws"
+     },
+     "summary": {
+      "ka": "გააწელე ორბიტა, აირჩიე პლანეტა ან კომეტა და ნახე სამივე კანონი მოქმედებაში: ელიფსი და მისი ფოკუსები, ტოლი ფართობები ტოლ დროში და ორბიტასთან ერთად მზარდი წელიწადი.",
+      "en": "Stretch an orbit, pick a planet or a comet and see the three laws at work: the ellipse and its foci, equal areas in equal times, and the year growing with the orbit."
+     }
+    },
+    {
+     "id": "orbits",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "ორბიტები და გაქცევის სიჩქარე",
+      "en": "Orbits & Escape Velocity"
+     },
+     "summary": {
+      "ka": "ნიუტონის ზარბაზანი: გაისროლე სულ უფრო სწრაფად — ჩამოვარდება, პლანეტას შემოუვლის თუ სამუდამოდ გაიქცევა.",
+      "en": "Newton’s cannon: launch faster and faster — fall back, circle the planet or escape for good."
+     }
+    },
+    {
+     "id": "lunar-mission",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "ფრენა მთვარეზე",
+      "en": "Flight to the Moon"
+     },
+     "summary": {
+      "ka": "მთვარისკენ გადასვლა, თავისუფალი დაბრუნება და მთვარის ორბიტა: გაიმეორე „არტემიდა II“, „აპოლონ-13“ და „აპოლონ-11“ ან შექმენი შენი ტრაექტორია.",
+      "en": "Translunar injection, free return and lunar orbit: fly Artemis II, Apollo 13 and Apollo 11, or design your own trajectory."
+     }
+    },
+    {
+     "id": "lagrange-points",
+     "ready": true,
+     "important": false,
+     "title": {
+      "ka": "ლაგრანჟის წერტილები",
+      "en": "Lagrange Points"
+     },
+     "summary": {
+      "ka": "ხუთი ადგილი, სადაც მიზიდულობა და ბრუნვა აწონასწორებს ერთმანეთს. გაუშვი ნაწილაკები L1–L5-ში: სამი გაიქცევა, ორი კი თავის ტროელებს შეინარჩუნებს.",
+      "en": "Five places where gravity and the turning frame balance. Release particles at L1–L5: watch three drift away and two hold their Trojans."
+     }
+    }
+   ]
+  },
+  {
    "id": "modern",
    "name": {
     "ka": "თანამედროვე ფიზიკა",
@@ -816,45 +929,6 @@
      "summary": {
       "ka": "ააწყვე ატომები პროტონებისგან, ნეიტრონებისა და ელექტრონებისგან 3D-ში და აღმოაჩინე ელემენტები, იონები და იზოტოპები.",
       "en": "Build atoms from protons, neutrons and electrons in 3D and discover elements, ions and isotopes."
-     }
-    },
-    {
-     "id": "atomic-spectra",
-     "ready": true,
-     "important": false,
-     "title": {
-      "ka": "ატომის ენერგეტიკული დონეები და სპექტრი",
-      "en": "Atomic energy levels and spectra"
-     },
-     "summary": {
-      "ka": "ენერგეტიკულ დონეებს შორის გადასვლები და გამოსხივების სპექტრული ხაზები.",
-      "en": "Transitions between energy levels and the resulting emission lines."
-     }
-    },
-    {
-     "id": "photoelectric",
-     "ready": true,
-     "important": false,
-     "title": {
-      "ka": "ფოტოეფექტი",
-      "en": "Photoelectric Effect"
-     },
-     "summary": {
-      "ka": "გაანათე ლითონი და ამოაგდე ელექტრონები: გაიგე, რატომ აქვს მნიშვნელობა სინათლის ფერს და არა სიკაშკაშეს, და ელექტრონების ენერგია ძაბვით გაზომე.",
-      "en": "Shine light on a metal and knock out electrons: discover why the colour of light matters and brightness does not, and measure the electrons' energy with a voltage."
-     }
-    },
-    {
-     "id": "quantum-tunneling",
-     "ready": true,
-     "important": false,
-     "title": {
-      "ka": "კვანტური გვირაბული ეფექტი",
-      "en": "Quantum tunneling"
-     },
-     "summary": {
-      "ka": "ნაწილაკის ენერგიისა და ბარიერის ზომის გავლენა ბარიერში გავლის ალბათობაზე.",
-      "en": "How particle energy and barrier dimensions affect transmission probability."
      }
     },
     {
@@ -977,101 +1051,88 @@
    ]
   },
   {
-   "id": "space",
+   "id": "quantum",
    "name": {
-    "ka": "კოსმოსი",
-    "en": "Space"
+    "ka": "კვანტური მექანიკა",
+    "en": "Quantum Mechanics"
    },
    "topics": [
     {
-     "id": "solar-system",
+     "id": "photoelectric",
      "ready": true,
      "important": false,
      "title": {
-      "ka": "მზის სისტემა",
-      "en": "Solar System"
+      "ka": "ფოტოეფექტი",
+      "en": "Photoelectric Effect"
      },
      "summary": {
-      "ka": "გაეცანი მზესა და რვა პლანეტას 3D-ში, მათ რეალურ ორბიტებზე — დღევანდელი მდებარეობიდან.",
-      "en": "Explore the Sun and the eight planets in 3D on their real orbits — starting from where they are today."
+      "ka": "გაანათე ლითონი და ამოაგდე ელექტრონები: გაიგე, რატომ აქვს მნიშვნელობა სინათლის ფერს და არა სიკაშკაშეს, და ელექტრონების ენერგია ძაბვით გაზომე.",
+      "en": "Shine light on a metal and knock out electrons: discover why the colour of light matters and brightness does not, and measure the electrons' energy with a voltage."
      }
     },
     {
-     "id": "moon-phases",
+     "id": "quantum-double-slit",
      "ready": true,
      "important": false,
      "title": {
-      "ka": "მთვარის ფაზები",
-      "en": "Moon Phases"
+      "ka": "ორმაგი ჭრილი: ფოტონები სათითაოდ",
+      "en": "Double slit: one photon at a time"
      },
      "summary": {
-      "ka": "გაუშვი მთვარე დედამიწის გარშემო და ნახე, რატომ იზრდება და კლებულობს: მზე ყოველთვის ერთ ნახევარს ანათებს, ჩვენ კი ამ ნახევარს სხვადასხვა მხრიდან ვხედავთ. გაიგე, რა ორი სახის თვე არსებობს და რატომაა დაბნელება იშვიათი.",
-      "en": "Send the Moon round the Earth and see why it waxes and wanes: the Sun always lights one half, and we see that half from a changing side. Explore the two kinds of month and why eclipses are rare."
+      "ka": "დააგროვე ფოტონების ცალკეული დაფიქსირებები და დაინახე ინტერფერენციული სურათი. შეცვალე ტალღის სიგრძე და ჭრილების დაშორება, შემდეგ შეადარე წერტილები პროგნოზირებულ ალბათობებს.",
+      "en": "Collect individual photon detections and watch an interference pattern emerge. Change the wavelength and slit separation, then compare the dots with the predicted probabilities."
      }
     },
     {
-     "id": "seasons",
+     "id": "atomic-spectra",
      "ready": true,
      "important": false,
      "title": {
-      "ka": "წელიწადის დროები",
-      "en": "Seasons"
+      "ka": "ატომის ენერგეტიკული დონეები და სპექტრი",
+      "en": "Atomic energy levels and spectra"
      },
      "summary": {
-      "ka": "დახარე დედამიწის ღერძი, აირჩიე განედი და თარიღი და დააკვირდი, როგორ იცვლება მზის სიმაღლე, დღის ხანგრძლივობა და წელიწადის დროები, სანამ დედამიწა მზის გარშემო მოძრაობს.",
-      "en": "Tilt the Earth's axis, pick a latitude and a date, and watch the Sun's height, the length of the day and the seasons change as the Earth travels round the Sun."
+      "ka": "ენერგეტიკულ დონეებს შორის გადასვლები და გამოსხივების სპექტრული ხაზები.",
+      "en": "Transitions between energy levels and the resulting emission lines."
      }
     },
     {
-     "id": "kepler-laws",
+     "id": "particle-in-a-box",
      "ready": true,
      "important": false,
      "title": {
-      "ka": "კეპლერის კანონები",
-      "en": "Kepler’s Laws"
+      "ka": "ნაწილაკი ყუთში",
+      "en": "Particle in a box"
      },
      "summary": {
-      "ka": "გააწელე ორბიტა, აირჩიე პლანეტა ან კომეტა და ნახე სამივე კანონი მოქმედებაში: ელიფსი და მისი ფოკუსები, ტოლი ფართობები ტოლ დროში და ორბიტასთან ერთად მზარდი წელიწადი.",
-      "en": "Stretch an orbit, pick a planet or a comet and see the three laws at work: the ellipse and its foci, equal areas in equal times, and the year growing with the orbit."
+      "ka": "რატომ აქვს ჩაკეტილ ელექტრონს მხოლოდ გარკვეული ენერგიები და სად შეიძლება მისი აღმოჩენა.",
+      "en": "Why a trapped electron has only certain energies, and where it can be found."
      }
     },
     {
-     "id": "orbits",
+     "id": "quantum-tunneling",
      "ready": true,
      "important": false,
      "title": {
-      "ka": "ორბიტები და გაქცევის სიჩქარე",
-      "en": "Orbits & Escape Velocity"
+      "ka": "კვანტური გვირაბული ეფექტი",
+      "en": "Quantum tunneling"
      },
      "summary": {
-      "ka": "ნიუტონის ზარბაზანი: გაისროლე სულ უფრო სწრაფად — ჩამოვარდება, პლანეტას შემოუვლის თუ სამუდამოდ გაიქცევა.",
-      "en": "Newton’s cannon: launch faster and faster — fall back, circle the planet or escape for good."
+      "ka": "ნაწილაკის ენერგიისა და ბარიერის ზომის გავლენა ბარიერში გავლის ალბათობაზე.",
+      "en": "How particle energy and barrier dimensions affect transmission probability."
      }
     },
     {
-     "id": "lunar-mission",
+     "id": "schrodinger-cat",
      "ready": true,
      "important": false,
      "title": {
-      "ka": "ფრენა მთვარეზე",
-      "en": "Flight to the Moon"
+      "ka": "შრედინგერის კატა",
+      "en": "Schrödinger's cat"
      },
      "summary": {
-      "ka": "მთვარისკენ გადასვლა, თავისუფალი დაბრუნება და მთვარის ორბიტა: გაიმეორე „არტემიდა II“, „აპოლონ-13“ და „აპოლონ-11“ ან შექმენი შენი ტრაექტორია.",
-      "en": "Translunar injection, free return and lunar orbit: fly Artemis II, Apollo 13 and Apollo 11, or design your own trajectory."
-     }
-    },
-    {
-     "id": "lagrange-points",
-     "ready": true,
-     "important": false,
-     "title": {
-      "ka": "ლაგრანჟის წერტილები",
-      "en": "Lagrange Points"
-     },
-     "summary": {
-      "ka": "ხუთი ადგილი, სადაც მიზიდულობა და ბრუნვა აწონასწორებს ერთმანეთს. გაუშვი ნაწილაკები L1–L5-ში: სამი გაიქცევა, ორი კი თავის ტროელებს შეინარჩუნებს.",
-      "en": "Five places where gravity and the turning frame balance. Release particles at L1–L5: watch three drift away and two hold their Trojans."
+      "ka": "აზრობრივი ექსპერიმენტი ერთი ატომითა და მძინარე კატით: რას წინასწარმეტყველებს კვანტური მექანიკა ყუთის გახსნამდე.",
+      "en": "A thought experiment with one atom and a sleeping cat: what quantum mechanics predicts before you open the box."
      }
     }
    ]

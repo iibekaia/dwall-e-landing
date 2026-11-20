@@ -78,7 +78,7 @@ const HELPERS = `
 async function openApp(win, base, lang, route, { annotations = true } = {}) {
   await win.loadURL(base + '/');
   await win.webContents.executeJavaScript(
-    `localStorage.setItem('dwall-e:settings', JSON.stringify({ version: 1, theme: '${CONFIG.theme}', language: '${lang}', level: '${CONFIG.level}', levelChosen: true, fontScale: 1, reducedMotion: false, theoryMarker: true, annotations: ${annotations}, volume: 0 })); true`,
+    `localStorage.setItem('dwall-e:role', 'researcher'); localStorage.setItem('dwall-e:settings', JSON.stringify({ version: 1, theme: '${CONFIG.theme}', language: '${lang}', level: '${CONFIG.level}', levelChosen: true, fontScale: 1, reducedMotion: false, theoryMarker: true, annotations: ${annotations}, volume: 0 })); true`,
   );
   await win.loadURL(base + route);
   await wait(2500);
@@ -99,6 +99,8 @@ async function recordClip(win, recorder, base, lang, clip, outDir) {
     `(() => { const b = window.__find(${JSON.stringify(t.fullscreen)}); if (b) { b.click(); setTimeout(() => (b.style.visibility = 'hidden'), 50); } return true; })()`,
   );
   await wait(2000);
+  // Keep the presentation background free of planet names, dates and scale captions.
+  if (clip.hideLabels) await win.webContents.insertCSS('.sim-label { display: none !important; }');
   if ((clip.actions ?? []).some((a) => a.start)) {
     await win.webContents.executeJavaScript(`(window.__find(${JSON.stringify(t.start)}) || {}).click?.(); true`);
   }

@@ -6,7 +6,7 @@
   "theme": "dark",
   "level": "advanced",
   "clips": [
-    { "id": "solar-system", "seconds": 10 },
+    { "id": "solar-system", "seconds": 16, "hideLabels": true },
     { "id": "projectile-motion", "seconds": 7, "actions": [{ "start": true }] },
     { "id": "foucault-pendulum", "seconds": 9, "actions": [{ "start": true }] },
     { "id": "prism", "seconds": 8, "actions": [{ "select": "flint" }] },

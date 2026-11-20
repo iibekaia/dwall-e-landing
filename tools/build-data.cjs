@@ -18,14 +18,26 @@ const core = {
   ka: JSON.parse(fs.readFileSync(path.join(APP, 'core', 'i18n', 'translations', 'ka.json'), 'utf8')),
 };
 
-// Catalog entries: "{ id: 'x', category: 'y', ... }" in teaching order.
-const entries = [...catalog.matchAll(/\{\s*id:\s*'([^']+)',\s*category:\s*'([^']+)'([^}]*?)(?=\n\s*\},|\},)/gs)].map((m) => ({
+// Keep teaching order and allow metadata (such as scene) before category.
+const entries = [...catalog.matchAll(/\{\s*id:\s*'([^']+)',([^}]*?)\n\s*\},/gs)].map((m) => ({
   id: m[1],
-  category: m[2],
-  ready: /load:/.test(m[3]),
-  important: /important:\s*true/.test(m[3]),
+  category: /category:\s*'([^']+)'/.exec(m[2])?.[1],
+  ready: /load:/.test(m[2]),
+  important: /important:\s*true/.test(m[2]),
 }));
 const order = [...categories.matchAll(/category\('([a-z]+)'\)/g)].map((m) => m[1]);
+const declaredCount = [...catalog.matchAll(/^\s+id:\s*'/gm)].length;
+if (!entries.length || entries.length !== declaredCount || new Set(entries.map((e) => e.id)).size !== entries.length) {
+  throw new Error('Catalog extraction is incomplete or contains duplicate topic ids.');
+}
+for (const entry of entries) {
+  if (!order.includes(entry.category)) throw new Error(`Unknown category for ${entry.id}: ${entry.category}`);
+  for (const lang of ['ka', 'en']) {
+    if (!core[lang].catalog[entry.id]?.title || !core[lang].catalog[entry.id]?.summary) {
+      throw new Error(`Missing ${lang} catalog translation for ${entry.id}`);
+    }
+  }
+}
 
 const topics = entries.map((e) => ({
   ...e,

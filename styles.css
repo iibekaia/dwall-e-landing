@@ -140,6 +140,16 @@ figcaption { padding: 10px 14px; font-size: 0.9rem; color: var(--muted); backgro
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.55; }
 .hero-shade { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgb(11 11 16 / 0.35), rgb(11 11 16 / 0.9) 75%); }
 .hero-content { position: relative; display: grid; justify-items: center; max-width: 860px; }
+.hero-online { margin-top: 18px; color: var(--accent); text-underline-offset: 4px; font-weight: 600; }
+.hero-online-note { margin: 6px 0 0; font-size: 0.875rem; color: var(--muted); }
+.hero .cta { margin-bottom: 0; }
+.hero .facts { margin-top: 24px; }
+@media (max-height: 800px) and (min-width: 700px) {
+  .hero-logo { max-width: 88px; margin-bottom: 4px; }
+  .hero .hero-content h1 { font-size: 4.5rem; }
+  .hero .lead { margin: 12px 0; }
+  .hero .facts { margin-top: 16px; }
+}
 .hero-logo { width: clamp(96px, 12vw, 132px); height: auto; filter: drop-shadow(0 12px 40px rgb(99 102 241 / 0.45)); margin-bottom: 12px; }
 .hero h1 { font-size: clamp(3rem, 9vw, 6.5rem); margin: 0; }
 .motto { font-size: clamp(1.2rem, 2.6vw, 1.9rem); font-weight: 600; background: linear-gradient(90deg, #c7d2fe, #818cf8, #a5b4fc); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 0.2em 0 0.6em; }

@@ -139,6 +139,7 @@ function render(template, lang) {
     .replace(/<[^>]*\bdata-i18n-title="([^"]+)"[^>]*>/g, (tag, key) => tag.replace(/ title="[^"]*"/, ` title="${esc(t[key])}"`))
     .replace(/(<figcaption data-topic="([^"]+)">)[^<]*(<\/figcaption>)/g, (_, open, id, close) => open + esc(topicById.get(id)?.title[lang] ?? '') + close)
     .replace(/(<(\w+) data-count="ready">)[^<]*(<\/\2>)/g, (_, open, _tag, close) => open + DATA.ready + close)
+    .replace(/(<(\w+) data-count="categories">)[^<]*(<\/\2>)/g, (_, open, _tag, close) => open + DATA.categories.length + close)
     .replace(/<img data-shot="([^"]+)"[^>]*>/g, (tag, shot) => {
       const id = template.slice(0, template.indexOf(tag)).match(/<section [^>]*id="([^"]+)"/g).pop().match(/id="([^"]+)"/)[1];
       return `<img data-shot="${shot}" src="${media(`screen-${shot}.jpg`)}" alt="${esc(t[`${id}.title`] ?? t[`slide.${id}`] ?? '')}" loading="lazy" />`;

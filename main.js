@@ -136,6 +136,7 @@
     });
     document.querySelectorAll('[data-topic]').forEach((el) => (el.textContent = topicById.get(el.dataset.topic)?.title[lang] ?? ''));
     document.querySelectorAll('[data-count="ready"]').forEach((el) => (el.textContent = DATA.ready));
+    document.querySelectorAll('[data-count="categories"]').forEach((el) => (el.textContent = DATA.categories.length));
     document.querySelectorAll('img[data-shot]').forEach((img) => {
       img.src = media(`screen-${img.dataset.shot}.jpg`);
       const slide = img.closest('.slide').id;
